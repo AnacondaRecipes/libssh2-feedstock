@@ -21,14 +21,15 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
-    - python         # [win]
-    - cmake >2.8
+    # This results in a dependency cycle:
+    # curl->libssh2->cmake->curl
+    # .. instead build.sh downloads official releases
+    # (but for linux-32, our own older release).
+    # - cmake >2.8
+    - m2-unzip  # [win]
     - openssl 1.0.*
 
 test:
-  requires:
-    - python {{ environ['PY_VER'] + '*' }}  # [win]
-    
   commands:
     - test -f $PREFIX/include/libssh2.h              # [not win]
     - test -f $PREFIX/include/libssh2_publickey.h    # [not win]
