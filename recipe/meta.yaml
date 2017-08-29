@@ -18,6 +18,7 @@ requirements:
     - {{ compiler('c') }}
     - cmake-binary
     - cmake >2.8
+    - m2-unzip  # [win]
   host:
     - openssl
     - zlib
