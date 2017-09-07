@@ -1,6 +1,7 @@
 #!/bin/bash
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 # We use a repackaged cmake from elsewhere to break a build cycle.
 export PATH=${PREFIX}/cmake-bin/bin:${PATH}
 
@@ -68,6 +69,8 @@ pushd cycle-breaker
   fi
 popd
 
+=======
+>>>>>>> Use cmake-binary to break dependency cycle
 mkdir build
 pushd build
   for _shared in "OFF ON"; do

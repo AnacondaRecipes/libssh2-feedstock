@@ -13,11 +13,12 @@ build:
 
 requirements:
   build:
+    - {{ compiler('c') }}
     # This breals a dependency cycle:
     # curl->libssh2->cmake->curl
-    - {{ compiler('c') }}
+    # .. instead build.sh downloads official releases
+    # (but for linux-32, our own older release).
     - cmake-binary
-    - cmake >2.8
     - m2-unzip  # [win]
   host:
     - openssl
