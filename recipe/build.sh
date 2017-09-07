@@ -9,7 +9,7 @@ pushd cycle-breaker
   elif [[ $(uname) == Linux ]]; then
     if [[ $(uname -m) == x86_64 ]]; then
       wget https://cmake.org/files/v3.8/cmake-3.8.2-Linux-x86_64.tar.gz
-      tar -xf cmake-3.8.2-Darwin-x86_64.tar.gz
+      tar -xf cmake-3.8.2-Linux-x86_64.tar.gz
       export PATH=${PWD}/cmake-3.8.2-Linux-x86_64/bin:${PATH}
     elif [[ $(uname -m) == i686 ]]; then
       # There is no binary release of cmake for linux-32
@@ -41,7 +41,7 @@ popd
 
 mkdir build
 pushd build
-  for _shared in "OFF ON", do
+  for _shared in "OFF ON"; do
     cmake -DCMAKE_INSTALL_PREFIX=${PREFIX}  \
           -DBUILD_SHARED_LIBS=${_shared}    \
           -DCMAKE_INSTALL_LIBDIR=lib        \
