@@ -25,7 +25,7 @@ requirements:
     # curl->libssh2->cmake->curl
     # .. instead build.sh downloads official releases
     # (but for linux-32, our own older release).
-    # - cmake >2.8
+    - cmake-binary
     - m2-unzip  # [win]
     - openssl 1.0.*
 
