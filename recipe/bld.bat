@@ -1,16 +1,4 @@
-mkdir cycle-breaker
-pushd cycle-breaker
-  if %ARCH% == 32 goto skip_64
-  powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://cmake.org/files/v3.8/cmake-3.8.2-win64-x64.zip', 'cmake.zip') }"
-  unzip cmake.zip
-  set PATH=%CD%\cmake-3.8.2-win64-x64\bin;%PATH%
-  goto done
-:skip_64
-  powershell -command "& { (New-Object Net.WebClient).DownloadFile('https://cmake.org/files/v3.8/cmake-3.8.2-win32-x86.zip', 'cmake.zip') }"
-  unzip cmake.zip
-  set PATH=%CD%\cmake-3.8.2-win32-x86\bin;%PATH%
-:done
-popd
+set PATH=%PREFIX%\cmake-bin\bin;%PATH%
 
 mkdir build
 pushd build
