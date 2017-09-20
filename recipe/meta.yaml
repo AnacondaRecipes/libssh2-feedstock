@@ -16,8 +16,6 @@ requirements:
     - {{ compiler('c') }}
     # This breals a dependency cycle:
     # curl->libssh2->cmake->curl
-    # .. instead build.sh downloads official releases
-    # (but for linux-32, our own older release).
     - cmake-binary
     - m2-unzip  # [win]
   host:
