@@ -12,11 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 2
-  features:
-      - vc9    # [win and py27]
-      - vc10   # [win and py34]
-      - vc14   # [win and py35]
+  number: 3
 
 requirements:
   build:
@@ -24,7 +20,7 @@ requirements:
     # This breals a dependency cycle:
     # curl->libssh2->cmake->curl
     - cmake-binary
-    - openssl 1.0.*
+    - openssl
 
 test:
   commands:
