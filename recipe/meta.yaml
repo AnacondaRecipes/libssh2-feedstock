@@ -12,14 +12,17 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 3
+  number: 4
+  run_exports:
+    - {{ pin_subpackage('libssh2') }}
 
 requirements:
   build:
     - {{ compiler('c') }}
-    # This breals a dependency cycle:
+    # This breaks a dependency cycle:
     # curl->libssh2->cmake->curl
     - cmake-binary
+  host:
     - openssl
 
 test:
