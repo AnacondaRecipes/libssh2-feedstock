@@ -3,6 +3,10 @@
 # We use a repackaged cmake from elsewhere to break a build cycle.
 export PATH=${PREFIX}/cmake-bin/bin:${PATH}
 
+if [[ $target_platform =~ linux.* ]]; then
+  export LDFLAGS="$LDFLAGS -Wl,-rpath-link,$PREFIX/lib"
+fi
+
 for _shared in OFF ON; do
   mkdir build-${_shared}
   pushd build-${_shared}
