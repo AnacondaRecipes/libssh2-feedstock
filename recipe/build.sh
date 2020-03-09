@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# copy files which are missing from the release tarball
+# see: https://github.com/libssh2/libssh2/issues/379
+# TODO: remove this in the 1.9.1 or later releases
+cp ${RECIPE_DIR}/missing_files/*.c tests/
+
 # We use a repackaged cmake from elsewhere to break a build cycle.
 export PATH=${PREFIX}/cmake-bin/bin:${PATH}
 
