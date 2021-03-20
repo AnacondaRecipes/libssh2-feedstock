@@ -27,7 +27,7 @@ requirements:
     - make   # [unix]
     # This breaks a dependency cycle:
     # curl->libssh2->cmake->curl
-    - cmake-binary
+    - cmake
   host:
     - openssl
 
