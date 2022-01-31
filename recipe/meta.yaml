@@ -29,7 +29,9 @@ requirements:
     # curl->libssh2->cmake->curl
     - cmake-binary  # [not (osx and arm64)]
     - cmake-no-system         # [osx and arm64]
-  host:
+    - patch       # [not win]
+    - m2-patch    # [win]
+   host:
     - openssl
 
 test:
