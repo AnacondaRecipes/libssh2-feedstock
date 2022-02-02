@@ -31,7 +31,7 @@ requirements:
     - cmake-no-system         # [osx and arm64]
     - patch       # [not win]
     - m2-patch    # [win]
-   host:
+  host:
     - openssl
 
 test:
