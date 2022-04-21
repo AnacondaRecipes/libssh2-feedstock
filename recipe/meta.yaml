@@ -19,10 +19,7 @@ requirements:
     - make   # [unix]
     # This breaks a dependency cycle:
     # curl->libssh2->cmake->curl
-    - cmake-binary  # [not (osx and arm64)]
-    - cmake-no-system         # [osx and arm64]
-    - patch       # [not win]
-    - m2-patch    # [win]
+    - cmake-no-system
   host:
     - openssl
 
@@ -49,8 +46,8 @@ about:
   summary: 'the SSH library'
   description: |
     libssh2 is a library implementing the SSH2 protocol, available under the revised BSD license.
-  doc_url: https://www.libssh2.org/
-  doc_source_url: https://www.libssh2.org/docs.html
+  doc_url: https://www.libssh2.org/docs.html
+  doc_source_url: https://github.com/libssh2/libssh2/tree/libssh2-{{ version }}/docs
   dev_url: https://github.com/libssh2/libssh2
 
 extra:
