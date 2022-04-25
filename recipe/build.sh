@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# We use a repackaged cmake from elsewhere to break a build cycle.
-export PATH=${PREFIX}/cmake-bin/bin:${PATH}
-
 if [[ $target_platform =~ linux.* ]]; then
   export LDFLAGS="$LDFLAGS -Wl,-rpath-link,$PREFIX/lib"
 fi
