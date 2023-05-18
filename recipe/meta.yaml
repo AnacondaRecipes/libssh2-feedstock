@@ -22,6 +22,8 @@ requirements:
     - cmake-no-system
   host:
     - openssl 3.0.8
+  run:
+    - openssl 3.*
 
 test:
   commands:
