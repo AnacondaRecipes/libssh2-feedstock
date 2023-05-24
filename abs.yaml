@@ -5,3 +5,6 @@ build_parameters:
   - "--suppress-variables"
   #- "--skip-existing"
   - "--error-overlinking"
+
+aggregate_branch: openssl3_builds
+aggregate_check: false
