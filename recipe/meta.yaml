@@ -21,7 +21,7 @@ requirements:
     # curl->libssh2->cmake->curl
     - cmake-no-system
   host:
-    - openssl 3.0.8
+    - openssl {{ openssl }}
   run:
     - openssl 3.*
 
