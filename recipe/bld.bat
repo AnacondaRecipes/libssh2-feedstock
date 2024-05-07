@@ -10,4 +10,5 @@ pushd build
            -DCMAKE_BUILD_TYPE=Release               ^
            -DBUILD_SHARED_LIBS=ON
   cmake --build . --config Release --target INSTALL
+  ctest -VV --output-on-failure
 popd
