@@ -40,13 +40,12 @@ test:
     - test -f $PREFIX/lib/libssh2${SHLIB_EXT}        # [not win]
     - test -f $PREFIX/lib/pkgconfig/libssh2.pc       # [not win]
 
-    - if not exist %LIBRARY_INC%\\libssh2.h             exit 1  # [win]
-    - if not exist %LIBRARY_INC%\\libssh2_publickey.h   exit 1  # [win]
-    - if not exist %LIBRARY_INC%\\libssh2_sftp.h        exit 1  # [win]
-    - if not exist %LIBRARY_LIB%\\libssh2.lib           exit 1  # [win]
+    - if not exist %LIBRARY_INC%\\libssh2.h exit 1              # [win]
+    - if not exist %LIBRARY_INC%\\libssh2_publickey.h exit 1    # [win]
+    - if not exist %LIBRARY_INC%\\libssh2_sftp.h exit 1         # [win]
+    - if not exist %LIBRARY_LIB%\\libssh2.lib exit 1            # [win]
     - if not exist %LIBRARY_LIB%\\pkgconfig\\libssh2.pc exit 1  # [win]
-    - if not exist %LIBRARY_INC%\\libssh2.dll           exit 1  # [win]
-
+    - if not exist %LIBRARY_BIN%\\libssh2.dll exit 1            # [win]
 
 about:
   home: https://www.libssh2.org/
