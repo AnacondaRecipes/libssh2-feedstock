@@ -9,6 +9,7 @@ pushd build
     -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX%  ^
     -DCMAKE_BUILD_TYPE=Release               ^
     -DBUILD_SHARED_LIBS=ON                   ^
+    -D BUILD_STATIC_LIBS=OFF                 ^
     -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
     -D CMAKE_PREFIX_PATH=%LIBRARY_PREFIX%    ^
     -D ENABLE_ZLIB_COMPRESSION=ON            ^

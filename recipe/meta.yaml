@@ -17,11 +17,12 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
-    - ninja-base  # [win]
-    - make        # [unix]
     # This breaks a dependency cycle:
     # curl->libssh2->cmake->curl
     - cmake-no-system
+    - ninja-base  # [win]
+    - make        # [unix]
+    - pkg-config
   host:
     - openssl {{ openssl }}
     - zlib {{ zlib }}
