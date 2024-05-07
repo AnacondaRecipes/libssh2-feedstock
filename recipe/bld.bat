@@ -14,9 +14,12 @@ pushd build
     -D CMAKE_PREFIX_PATH=%LIBRARY_PREFIX%    ^
     -D ENABLE_ZLIB_COMPRESSION=ON            ^
     -D BUILD_EXAMPLES=OFF                    ^
-    -D BUILD_TESTING=OFF
+    -DBUILD_TESTING=ON                       ^
+    -DRUN_DOCKER_TESTS=OFF                   ^
 
   ninja -j%CPU_COUNT%
+  IF %ERRORLEVEL% NEQ 0 exit 1
+  ctest --output-on-failure
   IF %ERRORLEVEL% NEQ 0 exit 1
   ninja install
   IF %ERRORLEVEL% NEQ 0 exit 1
