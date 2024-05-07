@@ -14,15 +14,19 @@ fi
 
 for _shared in OFF ON; do
   mkdir build-${_shared}
-  pushd build-${_shared}
+  pushd build-${_shared} || exit
     cmake ${CMAKE_ARGS}                     \
           -DCMAKE_INSTALL_PREFIX=${PREFIX}  \
           -DBUILD_SHARED_LIBS=${_shared}    \
           -DCMAKE_INSTALL_LIBDIR=lib        \
+          -DCRYPTO_BACKEND=OpenSSL          \
+          -DENABLE_ZLIB_COMPRESSION=ON      \
+          -DBUILD_EXAMPLES=OFF              \
+          -DBUILD_TESTING=OFF               \
           ..
     make -j${CPU_COUNT} ${VERBOSE_CM}
     make install
-    # The most of the tests fails becasue of 'sh: docker: command not found'
+    # ctest fails on the docker image 'sh: docker: command not found'
     # ctest -VV --output-on-failure
-  popd
+  popd || exit
 done
