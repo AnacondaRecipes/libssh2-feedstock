@@ -16,7 +16,7 @@ pushd build
     -D BUILD_EXAMPLES=OFF                    ^
     -D BUILD_TESTING=OFF
 
-  ninja
+  ninja -j%CPU_COUNT%
   IF %ERRORLEVEL% NEQ 0 exit 1
   ninja install
   IF %ERRORLEVEL% NEQ 0 exit 1

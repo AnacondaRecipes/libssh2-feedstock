@@ -22,7 +22,6 @@ requirements:
     - cmake-no-system
     - ninja-base  # [win]
     - make        # [unix]
-    - pkg-config
   host:
     - openssl {{ openssl }}
     - zlib {{ zlib }}
@@ -35,7 +34,7 @@ test:
     - test -f $PREFIX/include/libssh2.h              # [not win]
     - test -f $PREFIX/include/libssh2_publickey.h    # [not win]
     - test -f $PREFIX/include/libssh2_sftp.h         # [not win]
-    
+
     - test -f $PREFIX/lib/libssh2.a                  # [not win]
     - test -f $PREFIX/lib/libssh2${SHLIB_EXT}        # [not win]
     - test -f $PREFIX/lib/pkgconfig/libssh2.pc       # [not win]
