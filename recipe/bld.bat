@@ -9,14 +9,16 @@ pushd build
     -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX%  ^
     -DCMAKE_BUILD_TYPE=Release               ^
     -DBUILD_SHARED_LIBS=ON                   ^
-    -D BUILD_STATIC_LIBS=OFF                 ^
-    -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
-    -D CMAKE_PREFIX_PATH=%LIBRARY_PREFIX%    ^
-    -D ENABLE_ZLIB_COMPRESSION=ON            ^
-    -D BUILD_EXAMPLES=OFF                    ^
+    -DBUILD_STATIC_LIBS=OFF                  ^
+    -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX%  ^
+    -DCMAKE_PREFIX_PATH=%LIBRARY_PREFIX%     ^
+    -DENABLE_ZLIB_COMPRESSION=ON             ^
+    -DCRYPTO_BACKEND=OpenSSL                 ^
+    -DBUILD_EXAMPLES=OFF                     ^
     -DBUILD_TESTING=ON                       ^
     -DRUN_DOCKER_TESTS=OFF                   ^
-    -DRUN_SSHD_TESTS=OFF
+    -DRUN_SSHD_TESTS=OFF                     ^
+    %CMAKE_ARGS%
 
   ninja -j%CPU_COUNT%
   IF %ERRORLEVEL% NEQ 0 exit 1
