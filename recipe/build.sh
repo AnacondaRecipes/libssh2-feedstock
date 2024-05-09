@@ -22,11 +22,14 @@ for _shared in OFF ON; do
           -DCRYPTO_BACKEND=OpenSSL          \
           -DENABLE_ZLIB_COMPRESSION=ON      \
           -DBUILD_EXAMPLES=OFF              \
-          -DBUILD_TESTING=OFF               \
+          -DBUILD_TESTING=ON                \
+          -DRUN_DOCKER_TESTS=OFF            \
+          -DRUN_SSHD_TESTS=OFF              \
           ..
     make -j${CPU_COUNT} ${VERBOSE_CM}
+    # Skip Docker and SSHD tests (see above) because they involve external dependencies
+    ctest --output-on-failure
     make install
     # ctest fails on the docker image 'sh: docker: command not found'
-    # ctest -VV --output-on-failure
   popd || exit
 done
