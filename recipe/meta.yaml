@@ -25,7 +25,8 @@ requirements:
     - openssl {{ openssl }}
     - zlib {{ zlib }}
   run:
-    - openssl  # exact pin handled through openssl run_exports
+    # exact pin handled through openssl and zlib run_exports
+    - openssl
     - zlib
 
 test:
