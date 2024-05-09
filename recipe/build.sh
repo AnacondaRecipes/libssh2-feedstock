@@ -12,15 +12,25 @@ if [[ "${target_platform}" == linux-aarch64 ]]; then
   fi
 fi
 
-for _shared in OFF ON; do
-  mkdir build-${_shared}
-  pushd build-${_shared}
-    cmake ${CMAKE_ARGS}                     \
-          -DCMAKE_INSTALL_PREFIX=${PREFIX}  \
-          -DBUILD_SHARED_LIBS=${_shared}    \
-          -DCMAKE_INSTALL_LIBDIR=lib        \
-          ..
-    make -j${CPU_COUNT} ${VERBOSE_CM}
-    make install
-  popd
-done
+mkdir build-shared
+pushd build-shared || exit
+  cmake -GNinja  \
+        ${CMAKE_ARGS}                     \
+        -DCMAKE_INSTALL_PREFIX=${PREFIX}  \
+        -DBUILD_SHARED_LIBS=ON            \
+        -DBUILD_STATIC_LIBS=OFF           \
+        -DCMAKE_INSTALL_LIBDIR=lib        \
+        -DCRYPTO_BACKEND=OpenSSL          \
+        -DENABLE_ZLIB_COMPRESSION=ON      \
+        -DBUILD_EXAMPLES=OFF              \
+        -DBUILD_TESTING=ON                \
+        -DRUN_DOCKER_TESTS=OFF            \
+        -DRUN_SSHD_TESTS=OFF              \
+        ..
+
+  ninja -j${CPU_COUNT}
+  # Skip Docker and SSHD tests (see above) because they involve external dependencies
+  ctest --output-on-failure
+  ninja install
+  # ctest fails on the docker image 'sh: docker: command not found'
+popd || exit
