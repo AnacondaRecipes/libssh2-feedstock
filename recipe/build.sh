@@ -28,7 +28,7 @@ pushd build-shared || exit
         -DRUN_SSHD_TESTS=OFF              \
         ..
 
-  ninja -j${CPU_COUNT} ${VERBOSE_CM}
+  ninja -j${CPU_COUNT}
   # Skip Docker and SSHD tests (see above) because they involve external dependencies
   ctest --output-on-failure
   ninja install
